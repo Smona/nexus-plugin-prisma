@@ -1,4 +1,5 @@
 import { core } from '@nexus/schema'
+import { CommonFieldConfig } from '@nexus/schema/dist/core'
 import { PrismaClient } from '@prisma/client'
 import { GraphQLResolveInfo } from 'graphql'
 import * as Helpers from './helpers'
@@ -61,7 +62,8 @@ type NexusPrismaScalarOpts<
    * ```
    */
   resolve?: CustomFieldResolver<TypeName, Alias extends undefined ? MethodName : Alias>
-} & NexusGenPluginFieldConfig<TypeName, Alias extends undefined ? MethodName : Alias>
+} & NexusGenPluginFieldConfig<TypeName, Alias extends undefined ? MethodName : Alias> &
+  CommonFieldConfig
 
 type RootObjectTypes = Pick<core.GetGen<'rootTypes'>, core.GetGen<'objectNames'>>
 
